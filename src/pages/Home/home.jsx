@@ -44,7 +44,7 @@ export function Home(){
                 <img src={category.image} alt="" className="category-image"/>
                 
                 <div className="btn-section">
-                 <a href="./productListing/productListing.html"> <button className="btn btn-primary">View Products</button></a>
+                 <Link to="./ProductListing"> <button className="btn btn-primary">View Products</button></Link>
                 </div>
             </div>
             </div>
