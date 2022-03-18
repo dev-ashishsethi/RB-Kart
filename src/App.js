@@ -1,19 +1,21 @@
 import "./App.css";
-import {Home} from "./pages/Home/home"
+import {Nav} from "./pages/Nav/Nav"
+import {Home} from "./pages/Home/Home.jsx"
 import {Route,Link,Routes} from "react-router-dom"
 import { products } from "./backend/db/products";
 import { ProductListing } from "./pages/ProductListing/ProductListing";
+import { Footer } from "./pages/Footer/Footer";
 function App() {
   return (
     <div className="App">
-
-      <Link to="./Home">Home</Link>
-      <Link to="./Product">Product</Link>
-
+      <Nav/>
+      
       <Routes>
-        <Route path="/Home" element={<Home/>}/>
-        <Route path="/Product" element={<ProductListing/>}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/ProductListing" element={<ProductListing/>}/>
       </Routes>
+      <Footer/>
+     
     </div>
   );
 }

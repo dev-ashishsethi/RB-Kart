@@ -1,5 +1,10 @@
-import {Link,Route} from "react-router-dom";
+import {Route,Link,Routes} from "react-router-dom"
 export function ProductListing(){
     
-    return <h1>This is Product Listing</h1>
+    return (
+        <main>
+            <Link to="/">Home</Link>
+            <h1  style={{color:"red"}}>This is Product Listing</h1>
+        </main>
+    )
 }
