@@ -1,6 +1,6 @@
 import "./App.css";
 import {Nav} from "./pages/Nav/Nav"
-import {Home} from "./pages/Home/Home.jsx"
+import {Home} from "./pages/Home/Home"
 import {Route,Link,Routes} from "react-router-dom"
 import { products } from "./backend/db/products";
 import { ProductListing } from "./pages/ProductListing/ProductListing";
