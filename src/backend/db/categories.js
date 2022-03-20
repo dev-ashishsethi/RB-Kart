@@ -13,21 +13,25 @@ export const categories = [
     _id: uuid(),
     categoryName: "Marvel",
     image:marvelPoster,
+    link:"./ProductListing/Marvel"
   },
   {
     _id: uuid(),
     categoryName: "DragonBall",
     image:dragonBall,
+    link:"./ProductListing/DragonBall"
   },
   {
     _id: uuid(),
     categoryName: "Harry Potter",
     image:harryPotter,
+    link:"./ProductListing/HarryPotter"
   },
   {
     _id: uuid(),
     categoryName: "Rick and Morty",
     image:rickMorty,
+    link:"./ProductListing/RickMorty"
   },
 ];
 

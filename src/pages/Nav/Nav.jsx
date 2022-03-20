@@ -5,7 +5,7 @@ export function Nav(){
     return (
     <main>
         <nav className="nav-container">
-            <Link to="./Home">
+            <Link to="./">
             <p className="nav-title">R<span className="nav-title-short">&</span>B <span className="nav-title-short">Store</span></p>
             </Link>
 
