@@ -11,7 +11,7 @@ import {RMImages} from "../../assets/images/products/Rick and morty"
 export const products = [
   {
     _id: uuid(),
-    title: "Goku Evolution T-shirt",
+    title: "Goku Evolution T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:DBImages.DBTshirt1,
     price: "549.00",
@@ -21,7 +21,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "The Little Saiyan T-shirt",
+    title: "The Little Saiyan T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:DBImages.DBTshirt2,
     price: "699.00",
@@ -35,7 +35,7 @@ export const products = [
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:DBImages.DBbadge,
     price: "60.00",
-    categoryName: "badge",
+    categoryName: "Badge",
     rating:"3",
     genre: "DragonBall"
   },
@@ -45,7 +45,7 @@ export const products = [
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:DBImages.DBbadge2,
     price: "60.00",
-    categoryName: "badge",
+    categoryName: "Badge",
     rating:"3",
     genre: "DragonBall"
   },
@@ -87,20 +87,20 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Master Of Mischief - Marvel Official T-shirt",
+    title: "Master Of Mischief - Marvel Official T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:MarvelImages.MarvelTshirt2,
     price: "649.00",
-    categoryName: "T-shirt",
+    categoryName: "T-Shirt",
     genre: "Marvel"
   },
   {
     _id: uuid(),
-    title: "Spider-Man: Logo - Marvel Official T-shirt",
+    title: "Spider-Man: Logo - Marvel Official T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:MarvelImages.MarvelTshirt,
     price: "549.00",
-    categoryName: "T-shirt",
+    categoryName: "T-Shirt",
     genre: "Marvel"
   },
   {
@@ -160,20 +160,20 @@ export const products = [
   //Harry Potter starts
   {
     _id: uuid(),
-    title: "Harry Potter: Alumni Pride - Harry Potter Official T-shirt",
+    title: "Harry Potter: Alumni Pride - Harry Potter Official T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:HPImages.HPTshirt,
     price: "549.00",
-    categoryName: "T-shirt",
+    categoryName: "T-Shirt",
     genre: "HarryPotter"
   },
   {
     _id: uuid(),
-    title: "Harry's Patronus - Harry Potter Official T-shirt",
+    title: "Harry's Patronus - Harry Potter Official T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:HPImages.HPTshirt2,
     price: "699.00",
-    categoryName: "T-shirt",
+    categoryName: "T-Shirt",
     genre: "HarryPotter"
   },
   {
@@ -233,20 +233,20 @@ export const products = [
   //Rick and morty starts
   {
     _id: uuid(),
-    title: "I'm Not Arguing - Rick And Morty Official T-shirt",
+    title: "I'm Not Arguing - Rick And Morty Official T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:RMImages.RMTshirt2,
     price: "699.00",
-    categoryName: "T-shirt",
+    categoryName: "T-Shirt",
     genre: "RickMorty"
   },
   {
     _id: uuid(),
-    title: "Space Cruiser - Rick And Morty Official T-shirt",
+    title: "Space Cruiser - Rick And Morty Official T-Shirt",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:RMImages.RMTshirt,
     price: "899.00",
-    categoryName: "T-shirt",
+    categoryName: "T-Shirt",
     genre: "RickMorty"
   },
   {
