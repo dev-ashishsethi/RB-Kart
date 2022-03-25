@@ -33,7 +33,7 @@ export const products = [
     _id: uuid(),
     title: "Saiyan Prince Silhouette - Badge",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
-    image:DBImages.DBbadge,
+    image:DBImages.DBbadge2,
     price: "60.00",
     categoryName: "Badge",
     rating:"3",
@@ -43,7 +43,7 @@ export const products = [
     _id: uuid(),
     title: "Kakarot Silhouette - Badge",
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
-    image:DBImages.DBbadge2,
+    image:DBImages.DBbadge,
     price: "60.00",
     categoryName: "Badge",
     rating:"3",
@@ -56,6 +56,7 @@ export const products = [
     image:DBImages.DBSticker2,
     price: "60.00",
     categoryName: "Sticker",
+    rating:"2",
     genre: "DragonBall"
   },
   {
@@ -65,6 +66,7 @@ export const products = [
     image:DBImages.DBSticker,
     price: "70.00",
     categoryName: "Sticker",
+    rating:"4",
     genre: "DragonBall"
   },
   {
@@ -74,6 +76,7 @@ export const products = [
     image:DBImages.DBBobbleHead,
     price: "500.00",
     categoryName: "Bobble head",
+    rating:"5",
     genre: "DragonBall"
   },
   {
@@ -83,6 +86,7 @@ export const products = [
     image:DBImages.DBBobbleHead2,
     price: "999.00",
     categoryName: "Bobble head",
+    rating:"1",
     genre: "DragonBall"
   },
   {
@@ -92,6 +96,7 @@ export const products = [
     image:MarvelImages.MarvelTshirt2,
     price: "649.00",
     categoryName: "T-Shirt",
+    rating:"3",
     genre: "Marvel"
   },
   {
@@ -101,6 +106,7 @@ export const products = [
     image:MarvelImages.MarvelTshirt,
     price: "549.00",
     categoryName: "T-Shirt",
+    rating:"4",
     genre: "Marvel"
   },
   {
@@ -110,6 +116,7 @@ export const products = [
     image:MarvelImages.Marvelbadge2,
     price: "39.00",
     categoryName: "Badge",
+    rating:"5",
     genre: "Marvel"
   },
   {
@@ -119,6 +126,7 @@ export const products = [
     image:MarvelImages.Marvelbadge,
     price: "69.00",
     categoryName: "Badge",
+    rating:"2",
     genre: "Marvel"
   },
   {
@@ -128,6 +136,7 @@ export const products = [
     image:MarvelImages.MarvelSticker2,
     price: "79.00",
     categoryName: "Sticker",
+    rating:"1",
     genre: "Marvel"
   },
   {
@@ -137,6 +146,7 @@ export const products = [
     image:MarvelImages.MarvelSticker,
     price: "59.00",
     categoryName: "Sticker",
+    rating:"3",
     genre: "Marvel"
   },
   {
@@ -146,6 +156,7 @@ export const products = [
     image:MarvelImages.MarvelBobbleHead2,
     price: "549.00",
     categoryName: "Bobble head",
+    rating:"4",
     genre: "Marvel"
   },
   {
@@ -155,6 +166,7 @@ export const products = [
     image:MarvelImages.MarvelBobbleHead,
     price: "499.00",
     categoryName: "Bobble head",
+    rating:"5",
     genre: "Marvel"
   },
   //Harry Potter starts
@@ -165,6 +177,7 @@ export const products = [
     image:HPImages.HPTshirt,
     price: "549.00",
     categoryName: "T-Shirt",
+    rating:"3",
     genre: "HarryPotter"
   },
   {
@@ -174,6 +187,7 @@ export const products = [
     image:HPImages.HPTshirt2,
     price: "699.00",
     categoryName: "T-Shirt",
+    rating:"3",
     genre: "HarryPotter"
   },
   {
@@ -183,6 +197,7 @@ export const products = [
     image:HPImages.HPbadge,
     price: "69.00",
     categoryName: "Badge",
+    rating:"4",
     genre: "HarryPotter"
   },
   {
@@ -192,6 +207,7 @@ export const products = [
     image:HPImages.HPbadge2,
     price: "79.00",
     categoryName: "Badge",
+    rating:"5",
     genre: "HarryPotter"
   },
   {
@@ -201,6 +217,7 @@ export const products = [
     image:HPImages.HPSticker,
     price: "89.00",
     categoryName: "Sticker",
+    rating:"3",
     genre: "HarryPotter"
   },
   {
@@ -210,6 +227,7 @@ export const products = [
     image:HPImages.HPSticker2,
     price: "119.00",
     categoryName: "Sticker",
+    rating:"2",
     genre: "HarryPotter"
   },
   {
@@ -218,7 +236,7 @@ export const products = [
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:HPImages.HPBobbleHead2,
     price: "799.00",
-    categoryName: "Sticker",
+    categoryName: "Bobble head",
     genre: "HarryPotter"
   },
   {
@@ -227,7 +245,8 @@ export const products = [
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:HPImages.HPBobbleHead,
     price: "999.00",
-    categoryName: "Sticker",
+    categoryName: "Bobble head",
+    rating:"4",
     genre: "HarryPotter"
   },
   //Rick and morty starts
@@ -238,6 +257,7 @@ export const products = [
     image:RMImages.RMTshirt2,
     price: "699.00",
     categoryName: "T-Shirt",
+    rating:"5",
     genre: "RickMorty"
   },
   {
@@ -247,6 +267,7 @@ export const products = [
     image:RMImages.RMTshirt,
     price: "899.00",
     categoryName: "T-Shirt",
+    rating:"3",
     genre: "RickMorty"
   },
   {
@@ -256,6 +277,7 @@ export const products = [
     image:RMImages.RMbadge2,
     price: "99.00",
     categoryName: "Badge",
+    rating:"4",
     genre: "RickMorty"
   },
   {
@@ -265,6 +287,7 @@ export const products = [
     image:RMImages.RMbadge,
     price: "59.00",
     categoryName: "Badge",
+    rating:"2",
     genre: "RickMorty"
   },
   {
@@ -274,6 +297,7 @@ export const products = [
     image:RMImages.RMSticker2,
     price: "59.00",
     categoryName: "Sticker",
+    rating:"3",
     genre: "RickMorty"
   },
   {
@@ -283,6 +307,7 @@ export const products = [
     image:RMImages.RMSticker,
     price: "69.00",
     categoryName: "Sticker",
+    rating:"3",
     genre: "RickMorty"
   },
   {
@@ -291,7 +316,8 @@ export const products = [
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:RMImages.RMBobbleHead2,
     price: "699.00",
-    categoryName: "Sticker",
+    categoryName: "Bobble head",
+    rating:"4",
     genre: "RickMorty"
   },
   {
@@ -300,7 +326,8 @@ export const products = [
     description: "The artwork will be screen printed to perfection on our premium, regular fit 100% Cotton Redwolf branded tees that you know and love.",
     image:RMImages.RMBobbleHead,
     price: "899.00",
-    categoryName: "Sticker",
+    categoryName: "Bobble head",
+    rating:"5",
     genre: "RickMorty"
   },
 ];

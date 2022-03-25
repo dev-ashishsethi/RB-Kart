@@ -8,9 +8,10 @@ import { filterProducts } from "../../context/Functions/filterProducts.jsx";
 
 export function ProductListing(){
     const {category}=useCategory();
-    const [state,dispatch]=useReducer(filterProducts,{items:[],tshirt:false,bobble:false,badges:false,sticker:false});
+    const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"1"});
+    
     const [tempData,setTempData]=useState("");
-    // let tempData
+    
     useEffect(()=>{
         (async ()=>{
             const response=await axios.get("/api/products");        
@@ -20,28 +21,29 @@ export function ProductListing(){
         })();
         
     },[]);
-    
+    //onClick={()=>dis}
     console.log("state",state.items)
+    console.log("low to high--->",state.low_to_High,"high to low-->",state.High_to_low)
     return (
         
     <div className="main-content">
     <div className="sidebar">
             <div className="filter">
                 <h3 className="filter-heading">Filters</h3>
-                <button className="btn btn-secondary">Clear</button>
+                <button className="btn btn-secondary" onClick={()=>dispatch({type: "STICKER" ,items:state.items, originalData:tempData})}>Clear</button>
             </div>
             <div className="section-line"></div>
 
             <div className="price-filter">
-                <label htmlFor="sorting" className="label">Price</label>
+                <label  className="label">Price</label>
                 <div className="input-section">
-                    <input type="radio" name="sorting" id="LOW_TO_HIGH" className="radio-input" onChange={()=>dispatch({type:"LOW_TO_HIGH",items:state.items})}/>
+                    <input type="radio" name="sorting" id="LOW_TO_HIGH" className="radio-input"  onChange={(e)=>dispatch({type:"LOW_TO_HIGH",items:state.items,isChecked:e.target.checked})}/>
                     <label className="radio-text" htmlFor="LOW_TO_HIGH"> Low to High</label> 
                 </div>
 
                 <div className="input-section">
-                    <input type="radio" name="sorting" id="HIGH_TO_LOW" className="radio-input" onChange={()=>dispatch({type:"HIGH_TO_LOW",items:state.items})}/>
-                    <label className="radio-text" htmlFor="HIGH_TO_LOW"> High to Low</label> 
+                    <input type="radio" name="sorting" id="HIGH_TO_LOW" className="radio-input"  onChange={(e)=>dispatch({type:"HIGH_TO_LOW",items:state.items,isChecked:e.target.checked})}/>
+                    <label className="radio-text" htmlFor="HIGH_TO_LOW" > High to Low</label> 
                 </div>
             </div>
 
@@ -73,7 +75,7 @@ export function ProductListing(){
                 <span className="rating-text">Rating</span>
                 
                 <div className="rating-container">
-                        <input type="range" className="slider"  name="rating" id="rating-slider" min="1" max="5" defaultValue="1"/>
+                        <input type="range" className="slider"  name="rating" id="rating-slider" min="1" max="5" defaultValue="1"  onChange={(e) => dispatch({ type: "RATING" ,items:state.items, originalData:tempData, rating:e.target.value})}/>
                         <label htmlFor="rating" className="star-rating">
                             <span>
                                 <All.IcBaselineStar className="star"/>
@@ -103,6 +105,12 @@ export function ProductListing(){
              <div className="product-card" key={items._id}>
                   <All.PhHeartStraightLight className="icon-on-card"/>
                  <img src={items.image} alt="" className="ecommerce-image" />
+                 
+                 <section className="card-rating-container">
+                 <h4 className="rating-card-text">{items.rating} </h4>
+                 <All.IcBaselineStar className="rating"/>
+                 </section>
+
                  <h4 className="product-title">{items.title}</h4>
                  <p className="ecommerce-description">{items.description}</p>
 

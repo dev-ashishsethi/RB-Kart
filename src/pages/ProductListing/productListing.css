@@ -66,7 +66,26 @@
 .star{
     margin-right: 0.7rem;
     color: var(--color-white);
+    background-color: transparent;
     font-size: x-large;
+}
+
+.rating{
+    margin-bottom: 4px;
+    color: var(--color-red);
+    background-color: transparent;
+    font-size: large;
+}
+.rating-card-text{
+    margin: 1rem 0rem 1rem 1rem;
+    color: var(--color-black);
+    background-color: transparent;
+}
+
+.card-rating-container{
+    display: flex;
+    background-color: transparent;
+    align-items: center;
 }
 
 #fifth-star{

@@ -1,7 +1,5 @@
 export function filterProducts(state,action){
-    // const orginalState=state.items;
-    // console.log("original state",state);
-    // const temp=action.originalData;
+    
     switch(action.type){
         case "LOW_TO_HIGH":
             return {...state,
@@ -28,9 +26,10 @@ export function filterProducts(state,action){
                         items:[...state.items].filter((ele) => ele.categoryName !== "T-Shirt").length===0?[...action.originalData]:[...state.items].filter((ele) => ele.categoryName !== "T-Shirt"),
                         tshirt:action.isChecked
                     }
+                
                 default: return state
             }
-            // [...state.items].length===0?[...action.originalData]:[...state.items].filter((ele) => ele.categoryName !== "T-Shirt"),
+            
         
         case "BOBBLE_HEADS":
             switch(action.isChecked){
@@ -79,15 +78,58 @@ export function filterProducts(state,action){
                       };
             }
 
+            case "RATING":
+                switch(action.rating){
+                    
+                    case "1":
+                        console.log("action rating",action.rating,"original data length",[...action.originalData].length,"state length",[...state.items].length)
+                        return {
+                            ...state,
+                            items: [...action.originalData].filter((ele) => ele.rating == 1),
+                            rating_number:1
+                        }
+                    case "2":
+                        
+                        return {
+                            ...state,
+                            items: [...action.originalData].filter((ele) => ele.rating <= 2),
+                            rating_number:2
+                        }
+                    case "3":
+                        
+                        return {
+                            ...state,
+                            items: [...action.originalData].filter((ele) => ele.rating <= 3),
+                            rating_number:3
+                        }
+                    case "4":
+                        
+                        return {
+                            ...state,
+                            items: [...action.originalData].filter((ele) => ele.rating <= 4),
+                            rating_number:4
+                        }
+                    case "5":
+                        console.log("action rating",action.rating,"original data length",[...action.originalData].length,"state length",[...state.items].length)
+                        return {
+                            ...state,
+                            items: [...action.originalData].filter((ele) => ele.rating <= 5),
+                            rating_number:5
+                        }
+                }
+
+        case "CLEAR":
+            return {
+                ...state,
+                items:[...action.originalData],
+                low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"1"
+            }
         case "ADD_FILTERED_DATA":
             return {
                 ...state,
                 items:action.payload
+                
             }
     }
     return state;
 }
-
-// state.items.filter((ele) => {
-//     return ele.categoryName === "T-shirt";
-//    })
