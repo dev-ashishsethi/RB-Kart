@@ -21,9 +21,9 @@ export function ProductListing(){
         })();
         
     },[]);
-    //onClick={()=>dis}
+    
     console.log("state",state.items)
-    console.log("low to high--->",state.low_to_High,"high to low-->",state.High_to_low)
+    console.log("rating--->",state.rating_number)
     return (
         
     <div className="main-content">
@@ -37,12 +37,12 @@ export function ProductListing(){
             <div className="price-filter">
                 <label  className="label">Price</label>
                 <div className="input-section">
-                    <input type="radio" name="sorting" id="LOW_TO_HIGH" className="radio-input"  onChange={(e)=>dispatch({type:"LOW_TO_HIGH",items:state.items,isChecked:e.target.checked})}/>
+                    <input type="radio" id="LOW_TO_HIGH"   className="radio-input" checked={state.low_to_High}  onChange={(e)=>dispatch({type:"LOW_TO_HIGH",items:state.items})}/>
                     <label className="radio-text" htmlFor="LOW_TO_HIGH"> Low to High</label> 
                 </div>
 
                 <div className="input-section">
-                    <input type="radio" name="sorting" id="HIGH_TO_LOW" className="radio-input"  onChange={(e)=>dispatch({type:"HIGH_TO_LOW",items:state.items,isChecked:e.target.checked})}/>
+                    <input type="radio"  id="HIGH_TO_LOW" className="radio-input"  checked={state.High_to_low} onChange={(e)=>dispatch({type:"HIGH_TO_LOW",items:state.items})}/>
                     <label className="radio-text" htmlFor="HIGH_TO_LOW" > High to Low</label> 
                 </div>
             </div>
@@ -75,7 +75,7 @@ export function ProductListing(){
                 <span className="rating-text">Rating</span>
                 
                 <div className="rating-container">
-                        <input type="range" className="slider"  name="rating" id="rating-slider" min="1" max="5" defaultValue="1"  onChange={(e) => dispatch({ type: "RATING" ,items:state.items, originalData:tempData, rating:e.target.value})}/>
+                        <input type="range" className="slider"  name="rating" id="rating-slider" min="1" max="5" value={state.rating_number}  onChange={(e) => dispatch({ type: "RATING" ,items:state.items, originalData:tempData, rating:e.target.value})}/>
                         <label htmlFor="rating" className="star-rating">
                             <span>
                                 <All.IcBaselineStar className="star"/>
