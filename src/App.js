@@ -6,7 +6,8 @@ import { products } from "./backend/db/products";
 import { ProductListing } from "./pages/ProductListing/ProductListing";
 
 import { Footer } from "./pages/Footer/Footer";
-import { useCategory } from "./context/ProductContext";
+
+import Mockman from "mockman-js";
 function App() {
   // const {category,setCategory}=useCategory();
   
@@ -15,6 +16,15 @@ function App() {
       <Nav/>
       
       <Routes>
+      <Route
+          path='/mockman'
+          element={
+            <div className='MockAPI'>
+              {" "}
+              <Mockman />
+            </div>
+          }
+        />
         <Route path="/" element={<Home />}/>
         <Route path="/ProductListing" element={<ProductListing />}/>       
       </Routes>
