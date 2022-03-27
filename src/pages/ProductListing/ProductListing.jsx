@@ -3,14 +3,13 @@ import { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import "./productListing.css"
 import { useCategory } from "../../context/ProductContext";
-// import { useFilter } from "../../context/FilterContext";
 import { filterProducts } from "../../context/Functions/filterProducts.jsx";
 
 export function ProductListing(){
     const {category}=useCategory();
     const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"1"});
     
-    const [tempData,setTempData]=useState("");
+    const [tempData,setTempData]=useState([]);
     
     useEffect(()=>{
         (async ()=>{

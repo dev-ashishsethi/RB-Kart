@@ -1,5 +1,4 @@
 import "../Nav/nav.css";
-import * as All from "../../assets/icons/icons.jsx";
 import { carousel } from "./carousel";
 import {Route,Link,Routes} from "react-router-dom"
 import axios from "axios";
@@ -9,7 +8,7 @@ import { useCategory } from "../../context/ProductContext";
 
 export function Home(){
     const {setCategory}=useCategory();
-    // console.log(setCategory);
+    
     const [data,setData]=useState([])
     const [carouselImage,setCarousel]=useState(carousel[0].image)
     useEffect(()=>{
@@ -25,8 +24,8 @@ export function Home(){
         let i=1;
             const timerId=setInterval(() => {
                 setCarousel(carousel[i].image);
-                i+=1;
-                i>3?i=1:i=i;
+                ++i;
+                i>carousel.length-1?i=1:i=i;
             }, 3000)
             return (()=>clearInterval(timerId));
     },[])
@@ -40,18 +39,15 @@ export function Home(){
         <h1 className="product-category-title">Choose your favourite </h1>
         <div className="category-cards">
         {data.map(item=>(
-            
-                
-            <div className="card card-align-item-start"  key={item.id}>
+        
+        <div className="card card-align-item-start"  key={item.id}>
                 <img src={item.image} alt="" className="category-image"/>
                 
                 <div className="btn-section">
                  <Link to={item.link} onClick={()=>setCategory(update=>item.categoryName)}> <button className="btn btn-primary">View Products</button></Link>
                 </div>
             </div>
-           
         )
-
         )}
         </div>
         </div>
