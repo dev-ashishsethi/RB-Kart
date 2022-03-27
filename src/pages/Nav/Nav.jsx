@@ -33,7 +33,7 @@ export function Nav(){
             <div className="nav-side">
                 <Link to="./wishlist/wishlist.html"> <All.PhHeartStraightFill className="navbar-icons"/></Link>{/** TODO: update links */}
                 <Link to="./Cart/cart.html"><All.IcRoundShoppingCart className="navbar-icons"/></Link>{/** TODO: update links */}
-                <Link to="/signIn"> <button className="btn btn-primary" onClick={onClickHandler}>{loginText()}</button></Link>{/** TODO: update links */}
+                <Link to={!login&&location.pathname!=="/signIn"&&location.pathname!=="/signUp"?"/signIn":""}> <button className="btn btn-primary" onClick={onClickHandler}>{loginText()}</button></Link>{/** TODO: update links */}
             </div>
 
         </nav>
