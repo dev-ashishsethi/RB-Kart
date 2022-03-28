@@ -8,10 +8,10 @@ import { categoryFilter, clearFilters, priceFilter, sorting } from "../../contex
 
 export function ProductListing(){
     const {category}=useCategory();
-    const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"5",clear:false});
+    const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"5"});
     
     const [tempData,setTempData]=useState([]);
-    
+    const data=[];
     useEffect(()=>{
         (async ()=>{
             const response=await axios.get("/api/products");        
@@ -21,12 +21,9 @@ export function ProductListing(){
         })();
         
     },[]);
-    
-    console.log("state",state.items)
-    console.log("rating--->",state.rating_number)
 
     const priceFilterData= priceFilter(state,state.rating_number);
-    const categoryFilterData=categoryFilter(priceFilterData,state.tshirt,state.bobble,state.badges,state.sticker);
+    const categoryFilterData=categoryFilter(priceFilterData,data,state.tshirt,state.bobble,state.badges,state.sticker);
     const sortedData=sorting(categoryFilterData,state.low_to_High,state.High_to_low);
     // const filteredData=clearFilters(sortedData,state.items,state.clear)
     
