@@ -4,10 +4,11 @@ import axios from "axios";
 import "./productListing.css"
 import { useCategory } from "../../context/ProductContext";
 import { filterProducts } from "../../context/Functions/filterProducts.jsx";
+import { categoryFilter, clearFilters, priceFilter, sorting } from "../../context/Functions/func.jsx";
 
 export function ProductListing(){
     const {category}=useCategory();
-    const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"1"});
+    const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"5",clear:false});
     
     const [tempData,setTempData]=useState([]);
     
@@ -23,13 +24,19 @@ export function ProductListing(){
     
     console.log("state",state.items)
     console.log("rating--->",state.rating_number)
+
+    const priceFilterData= priceFilter(state,state.rating_number);
+    const categoryFilterData=categoryFilter(priceFilterData,state.tshirt,state.bobble,state.badges,state.sticker);
+    const sortedData=sorting(categoryFilterData,state.low_to_High,state.High_to_low);
+    // const filteredData=clearFilters(sortedData,state.items,state.clear)
+    
     return (
         
     <div className="main-content">
     <div className="sidebar">
             <div className="filter">
                 <h3 className="filter-heading">Filters</h3>
-                <button className="btn btn-secondary" onClick={()=>dispatch({type: "STICKER" ,items:state.items, originalData:tempData})}>Clear</button>
+                <button className="btn btn-secondary" onClick={()=>dispatch({type: "CLEAR"})}>Clear</button>
             </div>
             <div className="section-line"></div>
 
@@ -99,8 +106,8 @@ export function ProductListing(){
             </div>
         </div>
     <div className="product-listing">
-        
-        {state.items && state.items.map((items)=>(
+    {/* sortedData.items && */}
+        { sortedData.map((items)=>(
              <div className="product-card" key={items._id}>
                   <All.PhHeartStraightLight className="icon-on-card"/>
                  <img src={items.image} alt="" className="ecommerce-image" />

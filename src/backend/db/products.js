@@ -237,6 +237,7 @@ export const products = [
     image:HPImages.HPBobbleHead2,
     price: "799.00",
     categoryName: "Bobble head",
+    rating:"5",
     genre: "HarryPotter"
   },
   {
