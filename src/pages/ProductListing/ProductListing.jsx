@@ -4,7 +4,7 @@ import axios from "axios";
 import "./productListing.css"
 import { useCategory } from "../../context/ProductContext";
 import { filterProducts } from "../../context/Functions/filterProducts.jsx";
-import { categoryFilter, clearFilters, priceFilter, sorting } from "../../context/Functions/func.jsx";
+import { categoryFilter, clearFilters, priceFilter, sorting } from "../../context/Functions/filterFn.jsx";
 
 export function ProductListing(){
     const {category}=useCategory();
