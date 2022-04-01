@@ -10,6 +10,7 @@ import Mockman from "mockman-js";
 import { SignUp } from "./pages/Sign Up/signup";
 import { SignIn } from "./pages/Sign In/signIn";
 import { Cart } from "./pages/Cart/Cart";
+import { Wishlist } from "./pages/Wishlist/wishList";
 function App() {  
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
         <Route path="/ProductListing" element={<ProductListing />}/>    
 
         <Route path="/Cart" element={<Cart/>}/>  
+        <Route path="/Wishlist" element={<Wishlist/>}/>  
         <Route path="/signUp" element={<SignUp/>}/>  
         <Route path="/signIn" element={<SignIn/>}/>       
       </Routes>
