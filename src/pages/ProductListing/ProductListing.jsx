@@ -4,13 +4,19 @@ import axios from "axios";
 import "./productListing.css"
 import { useCategory } from "../../context/ProductContext";
 import { filterProducts } from "../../context/Functions/filterProducts.jsx";
+import { categoryFilter, clearFilters, priceFilter, sorting } from "../../context/Functions/filterFn.jsx";
+import { useCart } from "../../context/CartContext.jsx";
+import {Link, useNavigate} from "react-router-dom";
+
 
 export function ProductListing(){
+    const navigate=useNavigate();
+    const {cart,setCart}=useCart();
     const {category}=useCategory();
-    const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"1"});
-    
+    const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"5"});
     const [tempData,setTempData]=useState([]);
-    
+  
+    const data=[];
     useEffect(()=>{
         (async ()=>{
             const response=await axios.get("/api/products");        
@@ -20,16 +26,46 @@ export function ProductListing(){
         })();
         
     },[]);
+
+    let itemsInCart=(productId)=>{
+        // console.log("id in items in cart",productId,cart);
+        return cart.some(cartItem=>cartItem._id===productId)
+    };
+
+    const priceFilterData= priceFilter(state,state.rating_number);
+    const categoryFilterData=categoryFilter(priceFilterData,data,state.tshirt,state.bobble,state.badges,state.sticker);
+    const sortedData=sorting(categoryFilterData,state.low_to_High,state.High_to_low);
     
-    console.log("state",state.items)
-    console.log("rating--->",state.rating_number)
+    
+    const addToCart=(items)=>{
+        
+        const token=localStorage.getItem("login");
+        console.log("items",items);
+        (async ()=>{
+            try {
+                
+                const response=await axios({method:"POST",url:"/api/user/cart",data:{product:items},headers:{authorization:token}}); 
+                setCart(response.data.cart);    
+                
+            } catch (error) {
+                console.error(error);
+            }
+        })();
+        
+        
+    }
+    
+    const onClickHandler=(items)=>{
+        itemsInCart(items._id)?navigate('/Cart'):addToCart(items);
+        console.log(itemsInCart(items._id));
+    }
     return (
         
     <div className="main-content">
     <div className="sidebar">
             <div className="filter">
                 <h3 className="filter-heading">Filters</h3>
-                <button className="btn btn-secondary" onClick={()=>dispatch({type: "STICKER" ,items:state.items, originalData:tempData})}>Clear</button>
+                <button className="btn btn-secondary" onClick={()=>dispatch({type: "CLEAR"})}>Clear</button>
             </div>
             <div className="section-line"></div>
 
@@ -99,8 +135,7 @@ export function ProductListing(){
             </div>
         </div>
     <div className="product-listing">
-        
-        {state.items && state.items.map((items)=>(
+        { sortedData.map((items)=>(
              <div className="product-card" key={items._id}>
                   <All.PhHeartStraightLight className="icon-on-card"/>
                  <img src={items.image} alt="" className="ecommerce-image" />
@@ -117,7 +152,7 @@ export function ProductListing(){
                      <strong className="ecommerce-price">₹ {items.price}</strong>
 
                      <div className="product-btn-section">
-                         <button className="btn btn-primary w-100">Add to Cart</button>
+                          <button className="btn btn-primary w-100" onClick={()=>onClickHandler(items)}>{itemsInCart(items._id)?"Go to Cart":"Add to Cart"}</button>
                      </div>
                  </div>
              </div>

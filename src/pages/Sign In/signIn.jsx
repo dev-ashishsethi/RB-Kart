@@ -7,7 +7,7 @@ import { useState } from "react/cjs/react.development";
 
 export function SignIn(){
     const {login,setLogin}=useAuth();
-    const [loginData,setLoginData]=useState({"email":"","password":""});
+    const [loginData,setLoginData]=useState({"email":"adarshbalika@gmail.com","password":"adarshbalika"});
     
     const onChangeHandler=(e)=>{
         return setLoginData(loginData=>({...loginData,[e.target.name]:e.target.value}))
@@ -19,7 +19,7 @@ export function SignIn(){
         console.log(response);
         if(response.status===200){
             const verificationToken= response.data.encodedToken;
-            localStorage.setItem("loginToken",verificationToken);
+            localStorage.setItem("login",verificationToken);
             const userObj= response.data.foundUser;
             const userId= response.data.foundUser._id;
             localStorage.setItem("UserId",userId);

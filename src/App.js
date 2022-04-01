@@ -9,6 +9,7 @@ import { Footer } from "./pages/Footer/Footer";
 import Mockman from "mockman-js";
 import { SignUp } from "./pages/Sign Up/signup";
 import { SignIn } from "./pages/Sign In/signIn";
+import { Cart } from "./pages/Cart/Cart";
 function App() {  
   return (
     <div className="App">
@@ -25,7 +26,9 @@ function App() {
           }
         />
         <Route path="/" element={<Home />}/>
-        <Route path="/ProductListing" element={<ProductListing />}/>       
+        <Route path="/ProductListing" element={<ProductListing />}/>    
+
+        <Route path="/Cart" element={<Cart/>}/>  
         <Route path="/signUp" element={<SignUp/>}/>  
         <Route path="/signIn" element={<SignIn/>}/>       
       </Routes>
