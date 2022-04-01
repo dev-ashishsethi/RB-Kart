@@ -36,7 +36,7 @@ export function SignUp(){
         console.log("response",response);
         if(response.status>=200 && response.status<299){
             const verificationToken=response.data.encodedToken;
-            localStorage.setItem("sign up token",verificationToken);
+            localStorage.setItem("login",verificationToken);
             const userData=response.data.createdUser;
             const userId=response.data.createdUser._id;
             localStorage.setItem("userId",userId);

@@ -3,7 +3,9 @@ import * as All from "../../assets/icons/icons.jsx"
 import {Route,Link,Routes, useLocation} from "react-router-dom"
 import { useAuth } from "../../context/Authentication";
 import { useState } from "react/cjs/react.production.min";
+import { useCart } from "../../context/CartContext";
 export function Nav(){
+    const {cart}=useCart();
     const {login,setLogin}=useAuth();
     const location=useLocation();
     console.log(location.pathname)
@@ -32,7 +34,9 @@ export function Nav(){
 
             <div className="nav-side">
                 <Link to="./wishlist/wishlist.html"> <All.PhHeartStraightFill className="navbar-icons"/></Link>{/** TODO: update links */}
-                <Link to="./Cart/cart.html"><All.IcRoundShoppingCart className="navbar-icons"/></Link>{/** TODO: update links */}
+                <div className="badges">
+                    <Link to="./Cart"><All.IcRoundShoppingCart className="navbar-icons"/>{cart.length>0&&<div className="wishlist-badge">{cart.length}</div>}</Link>{/** TODO: update links */}
+                </div>
                 <Link to={!login&&location.pathname!=="/signIn"&&location.pathname!=="/signUp"?"/signIn":""}> <button className="btn btn-primary" onClick={onClickHandler}>{loginText()}</button></Link>{/** TODO: update links */}
             </div>
 

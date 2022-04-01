@@ -5,12 +5,17 @@ import "./productListing.css"
 import { useCategory } from "../../context/ProductContext";
 import { filterProducts } from "../../context/Functions/filterProducts.jsx";
 import { categoryFilter, clearFilters, priceFilter, sorting } from "../../context/Functions/filterFn.jsx";
+import { useCart } from "../../context/CartContext.jsx";
+import {Link, useNavigate} from "react-router-dom";
+
 
 export function ProductListing(){
+    const navigate=useNavigate();
+    const {cart,setCart}=useCart();
     const {category}=useCategory();
     const [state,dispatch]=useReducer(filterProducts,{items:[],low_to_High:false,High_to_low:false,tshirt:false,bobble:false,badges:false,sticker:false,rating_number:"5"});
-    
     const [tempData,setTempData]=useState([]);
+  
     const data=[];
     useEffect(()=>{
         (async ()=>{
@@ -22,11 +27,38 @@ export function ProductListing(){
         
     },[]);
 
+    let itemsInCart=(productId)=>{
+        // console.log("id in items in cart",productId,cart);
+        return cart.some(cartItem=>cartItem._id===productId)
+    };
+
     const priceFilterData= priceFilter(state,state.rating_number);
     const categoryFilterData=categoryFilter(priceFilterData,data,state.tshirt,state.bobble,state.badges,state.sticker);
     const sortedData=sorting(categoryFilterData,state.low_to_High,state.High_to_low);
-    // const filteredData=clearFilters(sortedData,state.items,state.clear)
     
+    
+    const addToCart=(items)=>{
+        
+        const token=localStorage.getItem("login");
+        console.log("items",items);
+        (async ()=>{
+            try {
+                
+                const response=await axios({method:"POST",url:"/api/user/cart",data:{product:items},headers:{authorization:token}}); 
+                setCart(response.data.cart);    
+                
+            } catch (error) {
+                console.error(error);
+            }
+        })();
+        
+        
+    }
+    
+    const onClickHandler=(items)=>{
+        itemsInCart(items._id)?navigate('/Cart'):addToCart(items);
+        console.log(itemsInCart(items._id));
+    }
     return (
         
     <div className="main-content">
@@ -103,7 +135,6 @@ export function ProductListing(){
             </div>
         </div>
     <div className="product-listing">
-    {/* sortedData.items && */}
         { sortedData.map((items)=>(
              <div className="product-card" key={items._id}>
                   <All.PhHeartStraightLight className="icon-on-card"/>
@@ -121,7 +152,7 @@ export function ProductListing(){
                      <strong className="ecommerce-price">₹ {items.price}</strong>
 
                      <div className="product-btn-section">
-                         <button className="btn btn-primary w-100">Add to Cart</button>
+                          <button className="btn btn-primary w-100" onClick={()=>onClickHandler(items)}>{itemsInCart(items._id)?"Go to Cart":"Add to Cart"}</button>
                      </div>
                  </div>
              </div>
