@@ -6,10 +6,21 @@ import { useState } from "react";
 
 export function SignIn() {
   const { login, setLogin } = useAuth();
+  const [testLogin, setTestLogin] = useState(false);
   const [loginData, setLoginData] = useState({
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
+    email: testLogin === false ? "adarshbalika@gmail.com" : "",
+    password: testLogin === false ? "adarshbalika" : "",
   });
+
+  const testLoginHandler = () => {
+    if (testLogin) {
+      setTestLogin((test) => (test = false));
+      console.log("login email and password", loginData);
+    } else {
+      setTestLogin((test) => (test = true));
+      console.log("login email and password", loginData);
+    }
+  };
 
   const onChangeHandler = (e) => {
     return setLoginData((loginData) => ({
@@ -77,6 +88,15 @@ export function SignIn() {
           >
             Sign Up
           </Link>
+
+          <button
+            type="submit"
+            className="btn btn-primary form-btn"
+            id="test-login"
+            onClick={testLoginHandler}
+          >
+            Test Login
+          </button>
         </form>
       </div>
     </div>

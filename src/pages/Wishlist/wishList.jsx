@@ -4,16 +4,12 @@ import { MakiCross11 } from "../../assets/icons/icons.jsx";
 import "./wishList.css";
 import axios from "axios";
 import { useCart } from "../../context/CartContext";
-import { cartFn } from "../Cart/cartFn";
+// import { cartFn } from "../Cart/cartFn";
 
 export function Wishlist() {
   const { wishList, setWishList } = useWishList();
   const { cart, setCart } = useCart();
-  const [state, dispatch] = useReducer(cartFn, {
-    items: [],
-    qty: 1,
-    subTotal: 0,
-  });
+  const { state, dispatch } = useWishList();
   const removeHandler = (productid) => {
     (async () => {
       try {
@@ -53,6 +49,7 @@ export function Wishlist() {
   };
 
   const addToCart = (items) => {
+    console.log("INSIDE aDD TO CART");
     const token = localStorage.getItem("login");
     console.log("items", items);
     (async () => {
@@ -71,6 +68,7 @@ export function Wishlist() {
   };
 
   const increaseHandler = (productid) => {
+    console.log("INSIDE INCREASE HANDLER");
     (async () => {
       try {
         const token = localStorage.getItem("login");
@@ -83,7 +81,7 @@ export function Wishlist() {
         setCart(res.data.cart);
         console.log("response", res.data.cart);
         dispatch({
-          type: "INCREASE",
+          type: "INITIAL",
           payload: res.data.cart !== undefined ? res.data.cart : [],
           initialQty: res.data.cart[0].qty,
         });

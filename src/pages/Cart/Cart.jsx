@@ -3,19 +3,23 @@ import { useEffect, useReducer, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import * as All from "../../assets/icons/icons.jsx";
 import "./cart.css";
-import { cartFn } from "./cartFn";
 import { useWishList } from "../../context/WishlistContext";
+import { useAuth } from "../../context/Authentication";
+import { useNavigate } from "react-router-dom";
 
 export function Cart() {
   const [btnDisable, setBtnDisable] = useState(false);
   const { cart, setCart } = useCart();
-
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const { setWishList } = useWishList();
-  const [state, dispatch] = useReducer(cartFn, {
-    items: [],
-    qty: 1,
-    subTotal: 0,
-  });
+  // const [state, dispatch] = useReducer(cartFn, {
+  //   items: [],
+  //   qty: 1,
+  //   subTotal: 0,
+  // });
+
+  const { state, dispatch } = useWishList();
 
   const removeHandler = (productid) => {
     (async () => {
@@ -86,21 +90,26 @@ export function Cart() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("login");
+    if (login) {
+      const token = localStorage.getItem("login");
 
-    (async () => {
-      try {
-        const res = await axios({
-          method: "GET",
-          url: "/api/user/cart",
-          headers: { authorization: token },
-        });
-        setCart(res.data.cart);
-        dispatch({ type: "INITIAL", payload: res.data.cart });
-      } catch (error) {
-        console.error(error);
-      }
-    })();
+      (async () => {
+        try {
+          const res = await axios({
+            method: "GET",
+            url: "/api/user/cart",
+            headers: { authorization: token },
+          });
+          setCart(res.data.cart);
+          console.log(res.data.cart);
+          dispatch({ type: "INITIAL", payload: res.data.cart });
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    } else {
+      navigate("/signIn");
+    }
   }, []);
 
   const addToWishList = (items) => {

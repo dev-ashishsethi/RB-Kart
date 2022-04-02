@@ -10,24 +10,23 @@ export function cartFn(state, { type, payload, initialQty }) {
         [...payload].reduce(
           (sum, num) => ({
             ...sum,
-            price: Number(sum.price) + Number(num.price),
+            price: Number(sum.price) * sum.qty + Number(num.price) * num.qty,
           }),
-          { price: 0 }
+          { price: 0, qty: 1 }
         )
       );
       return {
         ...state,
         subTotal:
-          payload.length > 1
+          payload.length > 0
             ? [...payload].reduce(
                 (sum, num) => ({
                   ...sum,
-                  price: Number(sum.price) + Number(num.price),
+                  price:
+                    Number(sum.price) * sum.qty + Number(num.price) * num.qty,
                 }),
-                { price: 0 }
+                { price: 0, qty: 1 }
               )
-            : payload.length > 0
-            ? payload[0]
             : 0,
       };
     case "SUBTRACT":
@@ -66,7 +65,6 @@ export function cartFn(state, { type, payload, initialQty }) {
                 { price: 0, qty: 1 }
               )
             : 0,
-        qty: initialQty,
       };
   }
 }
