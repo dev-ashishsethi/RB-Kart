@@ -4,11 +4,15 @@ import { MakiCross11 } from "../../assets/icons/icons.jsx";
 import "./wishList.css";
 import axios from "axios";
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/Authentication";
+import { useNavigate } from "react-router-dom";
 // import { cartFn } from "../Cart/cartFn";
 
 export function Wishlist() {
   const { wishList, setWishList } = useWishList();
   const { cart, setCart } = useCart();
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const { state, dispatch } = useWishList();
   const removeHandler = (productid) => {
     (async () => {
