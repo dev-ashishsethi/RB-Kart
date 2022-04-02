@@ -2,9 +2,9 @@ import "./nav.css";
 import * as All from "../../assets/icons/icons.jsx";
 import { Route, Link, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/Authentication";
-import { useState } from "react/cjs/react.production.min";
 import { useCart } from "../../context/CartContext";
 import { useWishList } from "../../context/WishlistContext";
+
 export function Nav() {
   const { cart } = useCart();
   const { login, setLogin } = useAuth();

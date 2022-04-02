@@ -1,8 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useState,
-} from "react/cjs/react.development";
+import { createContext, useContext, useState } from "react";
 
 const WishlistContext = createContext();
 

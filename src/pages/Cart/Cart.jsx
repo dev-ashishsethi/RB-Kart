@@ -1,13 +1,10 @@
 import axios from "axios";
-import { useEffect, useReducer, useState } from "react/cjs/react.development";
-
-import { useAuth } from "../../context/Authentication";
+import { useEffect, useReducer, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import * as All from "../../assets/icons/icons.jsx";
 import "./cart.css";
 import { cartFn } from "./cartFn";
 import { useWishList } from "../../context/WishlistContext";
-// import { removeItemFromCartHandler } from "../../backend/controllers/CartController";
 
 export function Cart() {
   const [btnDisable, setBtnDisable] = useState(false);

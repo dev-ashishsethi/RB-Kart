@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react/cjs/react.development";
+import { useEffect, useReducer, useState } from "react";
 import { useWishList } from "../../context/WishlistContext";
 import { MakiCross11 } from "../../assets/icons/icons.jsx";
 import "./wishList.css";
