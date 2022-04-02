@@ -28,20 +28,24 @@ export function Wishlist() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("login");
+    if (login) {
+      const token = localStorage.getItem("login");
 
-    (async () => {
-      try {
-        const res = await axios({
-          method: "GET",
-          url: "/api/user/wishlist",
-          headers: { authorization: token },
-        });
-        setWishList(res.data.wishlist);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
+      (async () => {
+        try {
+          const res = await axios({
+            method: "GET",
+            url: "/api/user/wishlist",
+            headers: { authorization: token },
+          });
+          setWishList(res.data.wishlist);
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    } else {
+      navigate("/signIn");
+    }
   }, []);
 
   const itemsInCart = (productId) => {
