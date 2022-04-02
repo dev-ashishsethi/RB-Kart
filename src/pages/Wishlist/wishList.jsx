@@ -9,8 +9,7 @@ import { cartFn } from "../Cart/cartFn";
 export function Wishlist() {
   const { wishList, setWishList } = useWishList();
   const { cart, setCart } = useCart();
-  const [setBtnDisable] = useState(false);
-  const [dispatch] = useReducer(cartFn, {
+  const [state, dispatch] = useReducer(cartFn, {
     items: [],
     qty: 1,
     subTotal: 0,
@@ -74,7 +73,6 @@ export function Wishlist() {
   const increaseHandler = (productid) => {
     (async () => {
       try {
-        setBtnDisable(true);
         const token = localStorage.getItem("login");
         const res = await axios({
           method: "POST",
@@ -89,8 +87,6 @@ export function Wishlist() {
           payload: res.data.cart !== undefined ? res.data.cart : [],
           initialQty: res.data.cart[0].qty,
         });
-
-        setBtnDisable(false);
       } catch (error) {
         console.error(error);
       }
