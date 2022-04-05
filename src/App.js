@@ -10,6 +10,8 @@ import { SignUp } from "./pages/Sign Up/signup";
 import { SignIn } from "./pages/Sign In/signIn";
 import { Cart } from "./pages/Cart/Cart";
 import { Wishlist } from "./pages/Wishlist/wishList";
+import { SingleProduct } from "./pages/SingleProduct/singleProduct.jsx";
+import { NotFoundPage } from "./pages/404/404";
 function App() {
   return (
     <div className="App">
@@ -32,6 +34,8 @@ function App() {
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
+        <Route path="/product/:productID" element={<SingleProduct />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </div>

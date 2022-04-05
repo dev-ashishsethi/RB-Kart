@@ -1,0 +1,11 @@
+.not-found-heading {
+  font-size: 12em;
+}
+.not-found-line {
+  font-size: 8em;
+}
+.not-found {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

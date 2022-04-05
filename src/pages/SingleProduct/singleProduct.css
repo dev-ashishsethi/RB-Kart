@@ -1,0 +1,36 @@
+.single-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.single-product-details {
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+}
+.single-product-description {
+  margin: 2rem 0rem;
+  font-size: 1.2em;
+}
+.single-product-rating {
+  font-size: 1.1em;
+}
+.single-product-btn-section {
+  display: flex;
+  gap: 1rem;
+}
+.single-ecommerce-price {
+  color: var(--color-red);
+  font-size: 1.2em;
+  margin-bottom: 2rem;
+}
+.rating {
+  margin: 0px;
+}
+.card-rating-container {
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  margin-bottom: 2rem;
+}
