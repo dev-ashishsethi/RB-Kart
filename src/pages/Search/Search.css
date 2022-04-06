@@ -1,0 +1,7 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+.search-heading {
+  align-self: center;
+}
