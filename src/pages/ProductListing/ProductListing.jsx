@@ -332,17 +332,17 @@ export function ProductListing() {
                 }
               />
             )}
+            <Link to={`/product/${items._id}`} className="link-on-card">
+              <img src={items.image} alt="" className="ecommerce-image" />
 
-            <img src={items.image} alt="" className="ecommerce-image" />
+              <section className="card-rating-container">
+                <h4 className="rating-card-text">{items.rating} </h4>
+                <All.IcBaselineStar className="rating" />
+              </section>
 
-            <section className="card-rating-container">
-              <h4 className="rating-card-text">{items.rating} </h4>
-              <All.IcBaselineStar className="rating" />
-            </section>
-
-            <h4 className="product-title">{items.title}</h4>
-            <p className="ecommerce-description">{items.description}</p>
-
+              <h4 className="product-title">{items.title}</h4>
+              <p className="ecommerce-description">{items.description}</p>
+            </Link>
             <div className="price-and-btn">
               <strong className="ecommerce-price">₹ {items.price}</strong>
 
