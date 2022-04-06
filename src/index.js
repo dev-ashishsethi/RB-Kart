@@ -8,21 +8,24 @@ import { ProductProvider } from "./context/ProductContext";
 import { AuthProvider } from "./context/Authentication";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
+import { SearchProvider } from "./context/SearchContext";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <WishlistProvider>
-          <CartProvider>
-            <ProductProvider>
-              <App />
-            </ProductProvider>
-          </CartProvider>
-        </WishlistProvider>
-      </AuthProvider>
+      <SearchProvider>
+        <AuthProvider>
+          <WishlistProvider>
+            <CartProvider>
+              <ProductProvider>
+                <App />
+              </ProductProvider>
+            </CartProvider>
+          </WishlistProvider>
+        </AuthProvider>
+      </SearchProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

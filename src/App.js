@@ -12,6 +12,7 @@ import { Cart } from "./pages/Cart/Cart";
 import { Wishlist } from "./pages/Wishlist/wishList";
 import { SingleProduct } from "./pages/SingleProduct/singleProduct.jsx";
 import { NotFoundPage } from "./pages/404/404";
+import { Search } from "./pages/Search/Search";
 function App() {
   return (
     <div className="App">
@@ -36,6 +37,7 @@ function App() {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/product/:productID" element={<SingleProduct />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />
     </div>

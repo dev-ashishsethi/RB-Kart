@@ -1,16 +1,19 @@
 import "./nav.css";
 import * as All from "../../assets/icons/icons.jsx";
-import { Route, Link, Routes, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Authentication";
 import { useCart } from "../../context/CartContext";
 import { useWishList } from "../../context/WishlistContext";
+import { useSearch } from "../../context/SearchContext";
 
 export function Nav() {
   const { cart } = useCart();
   const { login, setLogin } = useAuth();
   const location = useLocation();
   const { wishList } = useWishList();
-  console.log("wishlist length", wishList.length);
+  const navigate = useNavigate();
+  const { setSearchTerm } = useSearch();
+
   const loginText = () => {
     return login === false ? "Log In" : "Log Out";
   };
@@ -19,6 +22,15 @@ export function Nav() {
     if (login) {
       localStorage.removeItem("loginToken");
       setLogin(false);
+    }
+  };
+
+  const SearchHandler = (e) => {
+    if (e.key === "Enter") {
+      setSearchTerm(e.target.value);
+      navigate("/search");
+    } else {
+      setSearchTerm("");
     }
   };
 
@@ -39,6 +51,7 @@ export function Nav() {
             className=" store-input-box"
             placeholder="Search the merch"
             id="email"
+            onKeyDown={(e) => SearchHandler(e)}
           />
         </div>
 
