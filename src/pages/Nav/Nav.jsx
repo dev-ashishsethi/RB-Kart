@@ -29,8 +29,6 @@ export function Nav() {
     if (e.key === "Enter") {
       setSearchTerm(e.target.value);
       navigate("/search");
-    } else {
-      setSearchTerm("");
     }
   };
 
