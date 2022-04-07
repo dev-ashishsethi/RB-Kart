@@ -26,6 +26,7 @@ This e-commerce app contains following features:
   - It shows all the products related to on category on which user clicked when on home page
   - This page also has filters which lets user filter products based on rating, type of product and sort by price
 3. Filters & Sorting
+  - Clear all feature
   - Filter by rating
   - Filter by category
   - Sort by price
