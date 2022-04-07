@@ -1,4 +1,5 @@
 ## RB-Kart
+![shopping_cart_black_24dp 1](https://user-images.githubusercontent.com/89299065/162186949-367b563a-d911-4e0c-a123-736fa503ff80.png)
 
 RB Kart is a merchandise e-commerce app.
 
