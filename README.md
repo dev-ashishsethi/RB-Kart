@@ -4,6 +4,10 @@ RB Kart is a merchandise e-commerce app.
 
 ## Video Demo:
 
+
+https://user-images.githubusercontent.com/89299065/162185040-d37b1885-6377-4e88-8174-5d6f32264780.mp4
+
+
 ## Features:
 
 This e-commerce app contains following features:
